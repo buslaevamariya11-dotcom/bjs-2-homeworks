@@ -42,8 +42,7 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   const monthlyPayment =
     creditBody *
     (monthlyRate +
-      monthlyRate /
-        ((1 + monthlyRate) ** countMonths - 1));
+      monthlyRate / ((1 + monthlyRate) ** countMonths - 1));
 
   const totalAmount = monthlyPayment * countMonths;
 
