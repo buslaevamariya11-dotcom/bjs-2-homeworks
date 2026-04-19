@@ -97,3 +97,49 @@ class Library {
     return this.books.splice(index, 1)[0];
   }
 }
+  class Student {
+    constructor(name) {
+    this.name = name;
+    this.marks = {};
+  }
+
+  addMark(mark, subject) {
+
+    if (mark < 2 || mark > 5) {
+      return;
+    }
+
+    if (!this.marks[subject]) {
+      this.marks[subject] = [];
+    }
+
+    this.marks[subject].push(mark);
+  }
+
+  getAverageBySubject(subject) {
+    const subjectMarks = this.marks[subject];
+
+    if (!subjectMarks || subjectMarks.length === 0) {
+      return 0;
+    }
+
+    const sum = subjectMarks.reduce((acc, mark) => acc + mark, 0);
+    return sum / subjectMarks.length;
+  }
+
+  getAverage() {
+    const subjects = Object.keys(this.marks);
+
+    if (subjects.length === 0) {
+      return 0;
+    }
+
+    let total = 0;
+
+    for (let subject of subjects) {
+      total += this.getAverageBySubject(subject);
+    }
+
+    return total / subjects.length;
+  }
+}
